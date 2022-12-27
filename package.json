@@ -1,6 +1,12 @@
 {
   "name": "mylinks",
   "description": "Eine modulare Link-Verwaltungssoftware zum kürzen von Links, erstellen von Umfragen und mehr.",
+  "scripts": {
+    "admin": "cd admin && npm run dev",
+    "server": "nodemon server",
+    "build": "cd admin && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run admin\""
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "ejs": "^3.1.8",
