@@ -11,7 +11,7 @@ app.get("/:domain/list", async (req, res) => {
     let links = await listLinks(req.params.domain, req.query);
     if (!links) return res.status(400).json({message: "Could not use the provided filter"});
 
-    res.json(links.map(link => mapLink(link)));
+    res.json(await Promise.all(links.map(link => mapLink(link))));
 });
 
 app.get("/:domain/:accessId", async (req, res) => {
