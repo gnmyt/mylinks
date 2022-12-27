@@ -20,9 +20,9 @@ module.exports = db.define("links", {
     },
     tags: {
         type: Sequelize.STRING,
-        defaultValue: "",
+        allowNull: true,
         get() {
-            return this.getDataValue('tags').split(',');
+            return this.getDataValue('tags')?.split(',');
         },
         set(val) {
             this.setDataValue('tags', val.join(','));
