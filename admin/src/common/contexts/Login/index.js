@@ -1,1 +1,1 @@
-export {LoginContext as default} from "./LoginContext";
+export {LoginContext as default, LoginProvider} from "./LoginContext";
