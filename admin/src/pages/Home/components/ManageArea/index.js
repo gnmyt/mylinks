@@ -1,0 +1,1 @@
+export {ManageArea as default} from "./ManageArea";
