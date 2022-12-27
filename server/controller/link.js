@@ -1,11 +1,15 @@
 const Link = require('../models/Link');
-const {getUserByName} = require("./user");
+const {getUserByName, getUserById} = require("./user");
 const {Op} = require("sequelize");
 
-module.exports.mapLink = (link) => ({
-    id: link.id, accessId: link.accessId, domainName: link.domainName, tags: link.tags?.split(","),
-    title: link.title, type: link.type, clicks: link.clicks, meta: JSON.parse(link.meta)
-});
+module.exports.mapLink = async (link) => {
+    const user = await getUserById(link.creatorId);
+
+    return {
+        ...link, tags: link.tags?.split(","), meta: JSON.parse(link.meta), createdAt: undefined, updatedAt: undefined,
+        creator: {id: user.id, username: user.username, email: user.email}
+    }
+}
 
 module.exports.listLinks = async (domainName, configuration) => {
     if (configuration.creator) {
