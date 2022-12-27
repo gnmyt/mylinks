@@ -1,0 +1,39 @@
+@import "@/common/styles/colors"
+
+.textbox-wrapper
+  position: relative
+
+.textbox-input
+  padding: 12px 0 12px 65px
+
+  font-size: 24pt
+  font-weight: 500
+  color: $gray
+  border: 2px solid $gray
+  border-radius: 15px
+
+.textbox-input::placeholder
+  color: $light-gray
+
+.textbox-icon
+  color: $gray
+  position: absolute
+  font-size: 24pt
+  left: 20px
+  top: calc(50% - 0.5em)
+
+@keyframes shake
+  10%, 90%
+    transform: translate3d(-1px, 0, 0)
+  20%, 80%
+    transform: translate3d(2px, 0, 0)
+  30%, 50%, 70%
+    transform: translate3d(-4px, 0, 0)
+  40%, 60%
+    transform: translate3d(4px, 0, 0)
+
+.shake
+  animation: shake 0.5s
+
+  & .textbox-input
+    border: 2px solid $red
