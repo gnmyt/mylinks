@@ -5,8 +5,9 @@ app.get("/list", (req, res) => {
     const moduleInfo = getModules();
     const modules = {};
 
-    for (let module in moduleInfo) delete moduleInfo[module]["info"]["validationSchema"];
-    for (let module in moduleInfo) modules[module] = moduleInfo[module]["info"];
+    for (let module in moduleInfo) {
+        modules[module] = {...moduleInfo[module]["info"], validationSchema: undefined};
+    }
 
     res.json(modules);
 });
