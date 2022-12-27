@@ -3,7 +3,7 @@ const {getUserByName} = require("./user");
 const {Op} = require("sequelize");
 
 module.exports.mapLink = (link) => ({
-    id: link.id, accessId: link.accessId, domainName: link.domainName, tags: link.tags.split(","),
+    id: link.id, accessId: link.accessId, domainName: link.domainName, tags: link.tags?.split(","),
     title: link.title, type: link.type, clicks: link.clicks, meta: JSON.parse(link.meta)
 });
 
