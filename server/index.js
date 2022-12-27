@@ -17,6 +17,7 @@ app.use("/api/auth", require('./routes/auth'));
 app.use("/api*", require('./middlewares/authenticate'));
 app.use("/api/link", require('./routes/link'));
 app.use("/api/info", require('./routes/info'));
+app.use("/api/module", require('./routes/module'));
 
 app.use("/api*", (req, res) => res.json({message: "Route not found"}));
 
