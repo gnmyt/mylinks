@@ -21,6 +21,11 @@ export const jsonRequest = async (path, headers = {}) => {
     return (await request(path, "GET", null, headers)).json();
 }
 
+// Run a PUT request and post some values
+export const putRequest = async (path, body, headers = {}) => {
+    return await request(path, "PUT", body, headers);
+}
+
 // Run a POST request and post some values
 export const postRequest = async (path, body, headers = {}) => {
     return await request(path, "POST", body, headers);
