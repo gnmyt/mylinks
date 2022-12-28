@@ -36,6 +36,10 @@ module.exports = db.define("links", {
         type: Sequelize.STRING,
         allowNull: false
     },
+    isEnabled: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+    },
     domainName: {
         type: Sequelize.STRING,
         allowNull: false
