@@ -10,6 +10,7 @@ module.exports = async (req, res, next) => {
     if (user === null) return res.status(401).json({message: "The provided token is incorrect"});
 
     req.user = await getUserById(user.userId);
+    if (req.user === null) return res.status(401).json({message: "The provided token is incorrect"});
 
     next();
 }
