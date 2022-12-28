@@ -10,6 +10,7 @@ app.get("/", async (req, res) => {
 
     const link = await getLinkByAccess(res.locals.accessId, currentDomain);
     if (!link) return sendNotFound(res);
+    if (!link.isEnabled) return sendNotFound(res);
 
     const module = getModule(link.type);
     if (!module) return sendNotFound(res);
