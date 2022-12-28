@@ -10,6 +10,7 @@ module.exports.listLinksValidation = Joi.object({
 module.exports.createLinkValidation = Joi.object({
     accessId: Joi.string().min(3).max(25),
     domainName: Joi.string().min(2).max(55).required(),
+    isEnabled: Joi.boolean(),
     title: Joi.string().min(3).max(25),
     type: Joi.string().max(25).required(),
     tags: Joi.array().max(5),
