@@ -1,6 +1,14 @@
-const {createLink, getLinkByAccess, listLinks, mapLink, getLinkById, deleteById} = require("../controller/link");
+const {
+    createLink,
+    getLinkByAccess,
+    listLinks,
+    mapLink,
+    getLinkById,
+    deleteById,
+    editLink
+} = require("../controller/link");
 const {validateSchema} = require("../util/validate");
-const {createLinkValidation, listLinksValidation} = require("../validations/link");
+const {createLinkValidation, listLinksValidation, editLinkValidation} = require("../validations/link");
 const {getModule} = require("../controller/module");
 const app = require('express').Router();
 
@@ -44,6 +52,32 @@ app.put("/", async (req, res) => {
     let link = await createLink({...req.body, creatorId: req.user.id});
 
     res.json({message: "Link created successfully", accessId: link.accessId})
+});
+
+app.patch("/:id", async (req, res) => {
+    const error = await validateSchema(editLinkValidation, req.body);
+    if (error) return res.status(400).json({message: error});
+
+    const currentLink = await getLinkById(req.params.id);
+    if (currentLink === null) return res.status(409).json({message: "The provided link does not exist"});
+
+    if (req.body.meta || req.body.type) {
+        const module = getModule(req.body.type || currentLink.type);
+        if (!module) return res.status(404).json({message: "The provided module does not exist"});
+
+        const moduleError = await validateSchema(module.info.validationSchema, req.body.meta);
+        if (req.body.meta && moduleError) return res.status(400).json({message: moduleError});
+    }
+
+    if (req.body.accessId || req.body.domainName) {
+        const accessId = req.body.accessId || currentLink.accessId;
+        const domainName = req.body.domainName || currentLink.domainName;
+
+        if (await getLinkByAccess(accessId, domainName)) return res.status(409).json({message: "The provided access id already exists"});
+    }
+
+    await editLink(req.params.id, req.body);
+    res.json({message: "Link updated successfully"})
 });
 
 app.delete("/:id", async (req, res) => {
