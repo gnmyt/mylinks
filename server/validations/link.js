@@ -16,3 +16,13 @@ module.exports.createLinkValidation = Joi.object({
     tags: Joi.array().max(5),
     meta: Joi.object().required()
 });
+
+module.exports.editLinkValidation = Joi.object({
+    accessId: Joi.string().min(3).max(25),
+    domainName: Joi.string().min(2).max(55),
+    isEnabled: Joi.boolean(),
+    title: Joi.string().min(3).max(25),
+    type: Joi.string().max(25),
+    tags: Joi.array().max(5),
+    meta: Joi.object()
+});
