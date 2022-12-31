@@ -19,6 +19,7 @@ app.use("/api/link", require('./routes/link'));
 app.use("/api/info", require('./routes/info'));
 app.use("/api/module", require('./routes/module'));
 app.use("/api/user", require('./routes/user'));
+app.use("/api/domains", require('./routes/domain'));
 
 app.use("/api*", (req, res) => res.json({message: "Route not found"}));
 
