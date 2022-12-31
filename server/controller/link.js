@@ -50,3 +50,7 @@ module.exports.clickLink = async (accessId, domainName) => {
 module.exports.createLink = async (configuration) => {
     return await Link.create(configuration);
 }
+
+module.exports.editLink = async (id, configuration) => {
+    return await Link.update(configuration, {where: {id}});
+}
