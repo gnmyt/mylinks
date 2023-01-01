@@ -7,7 +7,8 @@ export const TextBox = (props) => {
     return (
         <div className="textbox-wrapper" ref={props.useRef} onAnimationEnd={handleAnimation}>
             <input className="textbox-input" placeholder={props.placeholder} value={props.value}
-                   onChange={props.onUpdate} type={props.type || "text"} autoComplete={props.autoComplete} data-form-type={props.autoComplete === "off" ? "other" : "" }/>
+                   onChange={props.onUpdate} type={props.type || "text"} autoComplete={props.autoComplete}
+                   data-form-type={props.autoComplete === "off" ? "other" : ""} defaultValue={props.default}/>
             {props.icon && <FontAwesomeIcon icon={props.icon} className="textbox-icon"/>}
         </div>
     );
