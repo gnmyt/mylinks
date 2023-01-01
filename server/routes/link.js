@@ -70,10 +70,9 @@ app.patch("/:id", async (req, res) => {
     }
 
     if (req.body.accessId || req.body.domainName) {
-        const accessId = req.body.accessId || currentLink.accessId;
-        const domainName = req.body.domainName || currentLink.domainName;
+        const link = await getLinkByAccess(req.body.accessId || currentLink.accessId, req.body.domainName || currentLink.domainName);
 
-        if (await getLinkByAccess(accessId, domainName)) return res.status(409).json({message: "The provided access id already exists"});
+        if (link && link.id !== currentLink.id) return res.status(409).json({message: "The provided access id already exists"});
     }
 
     await editLink(req.params.id, req.body);
