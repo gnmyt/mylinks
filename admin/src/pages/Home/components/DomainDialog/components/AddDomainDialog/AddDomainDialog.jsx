@@ -6,7 +6,6 @@ import Button from "@/common/components/Button";
 import {useContext, useState} from "react";
 import {putRequest} from "@/common/utils/RequestUtil.js";
 import DomainContext from "@/common/contexts/Domain";
-import "./styles.sass";
 
 export const AddDomainDialog = () => {
     const [currentDomain, updateCurrentDomain, domains, updateDomains] = useContext(DomainContext);
