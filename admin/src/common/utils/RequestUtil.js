@@ -26,6 +26,11 @@ export const putRequest = async (path, body, headers = {}) => {
     return await request(path, "PUT", body, headers);
 }
 
+// Run a PATCH request and post some values
+export const patchRequest = async (path, body, headers = {}) => {
+    return await request(path, "PATCH", body, headers);
+}
+
 // Run a POST request and post some values
 export const postRequest = async (path, body, headers = {}) => {
     return await request(path, "POST", body, headers);
