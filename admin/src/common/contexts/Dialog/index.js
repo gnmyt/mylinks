@@ -1,0 +1,1 @@
+export {DialogContext as default, DialogProvider} from "./DialogContext.jsx";
