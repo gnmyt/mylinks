@@ -1,0 +1,1 @@
+export {DomainHeader as default} from "./DomainHeader";
