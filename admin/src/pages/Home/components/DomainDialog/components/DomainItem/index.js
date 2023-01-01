@@ -1,0 +1,1 @@
+export {DomainItem as default} from "./DomainItem";
