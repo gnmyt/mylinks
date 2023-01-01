@@ -8,7 +8,7 @@ export const InputGroup = (props) => {
                 <h4>{props.title}</h4>
                 <p>{props.description}</p>
             </div>
-            <TextBox placeholder={props.title} autoComplete={props.autoComplete}/>
+            <TextBox placeholder={props.title} autoComplete={props.autoComplete} value={props.value} default={props.default}/>
         </div>
     );
 }
