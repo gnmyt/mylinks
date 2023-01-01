@@ -58,7 +58,7 @@ export const LinkItem = (props) => {
                         <h3>{props.creator.username}</h3>
                     </div>
 
-                    <div className="view-area">
+                    <div className="view-area splitter">
                         &#124;
                     </div>
 
