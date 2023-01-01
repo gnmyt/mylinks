@@ -19,7 +19,7 @@ module.exports.listLinks = async (domainName, configuration) => {
     }
 
     if (configuration.tags)
-        configuration.tags = configuration.tags.split(",");
+        configuration.tags = {[Op.regexp]: configuration.tags.split(",").map(tag => `(^|,)${tag}(,|$)`).join("|")};
 
     if (configuration.title)
         configuration.title = {[Op.like]: "%" + configuration.title + "%"};
