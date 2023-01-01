@@ -7,6 +7,7 @@ import {ModuleProvider} from "@/common/contexts/Module";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import {UserProvider} from "@/common/contexts/User";
+import {DomainProvider} from "@/common/contexts/Domain/DomainContext.jsx";
 
 library.add(fas);
 
@@ -14,9 +15,11 @@ const App = () => (
     <LoginProvider>
         <UserProvider>
             <ModuleProvider>
-                <LinkProvider>
-                    <Home/>
-                </LinkProvider>
+                <DomainProvider>
+                    <LinkProvider>
+                        <Home/>
+                    </LinkProvider>
+                </DomainProvider>
             </ModuleProvider>
         </UserProvider>
     </LoginProvider>
