@@ -4,12 +4,15 @@
   background-color: $white
   border: 1px solid $gray
   border-radius: 15px
-  padding: 1rem 1.5rem
+  flex-wrap: wrap
+  gap: 1rem
+  padding: 0.5rem 1rem
   display: flex
   justify-content: space-between
 
 .info-area
   display: flex
+  flex-wrap: wrap
   align-items: center
   gap: 1rem
 
@@ -57,6 +60,7 @@
 
 .right-area
   display: flex
+  flex-wrap: wrap
 
 .author-image
   width: 2.5rem
@@ -69,8 +73,8 @@
   align-items: center
   gap: 0.5rem
   font-size: 16pt
-  margin-left: 1rem
-  margin-right: 1rem
+  margin-left: 0.5rem
+  margin-right: 0.5rem
 
 .view-area h3
   margin: 0
@@ -82,7 +86,7 @@
   gap: 2rem
   font-size: 22pt
   color: $gray
-  padding: 0 2rem
+  padding: 0.5rem 2rem
   border: 1px solid $gray
   border-radius: 1rem
   margin-left: 2rem
@@ -95,3 +99,30 @@
 
 .action-delete:hover
   color: $red-hover
+
+@media screen and (max-width: 1024px)
+  .link-info h4
+    font-size: 16pt
+  .link-info p
+    font-size: 12pt
+  .splitter
+    display: none
+  .right-area
+    gap: 1rem
+    justify-content: center
+  .view-area h3
+    font-size: 16pt
+  .action-area
+    margin-left: 0
+    font-size: 18pt
+
+@media screen and (max-width: 425px)
+  .view-area h3
+    font-size: 14pt
+  .action-area
+    padding: 0.5rem 1.5rem
+    font-size: 16pt
+
+@media screen and (max-width: 310px)
+  .action-area
+    flex-direction: column
