@@ -2,6 +2,7 @@
 
 .home-wrapper
   margin: 3rem 6rem 2rem
+  transition: all 0.5s ease-in-out
 
 .link-area
   margin-left: 5rem
@@ -10,7 +11,24 @@
   display: flex
   flex-direction: column
   gap: 1rem
+  transition: all 0.5s ease-in-out
 
 .text-center
   color: $gray
   text-align: center
+
+@media screen and (max-width: 1024px)
+  .home-wrapper
+    margin: 2rem 3rem 1rem
+  .link-area
+    margin: 2rem 3rem 1rem
+
+@media screen and (max-width: 768px)
+  .home-wrapper
+    margin: 1rem 2rem 0
+  .link-area
+    margin: 1rem 2rem 0
+
+@media screen and (max-width: 425px)
+  .home-wrapper
+    margin: 1rem
