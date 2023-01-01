@@ -1,0 +1,1 @@
+export {DomainButton as default} from "./DomainButton";
