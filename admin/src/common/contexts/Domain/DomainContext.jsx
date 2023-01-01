@@ -21,6 +21,7 @@ export const DomainProvider = (props) => {
     }, []);
 
     useEffect(() => {
+        if (domains.length === 0) return;
         if (!domains.includes(currentDomain))
             updateCurrentDomain(domains.length !== 0 ? domains[0] : window.location.host);
     }, [domains]);
