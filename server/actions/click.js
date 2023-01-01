@@ -6,7 +6,7 @@ const sendNotFound = (res) => res.status(404).render(process.cwd() + "/server/te
 
 app.get("/", async (req, res) => {
     res.locals.accessId = req.baseUrl.substring(1, req.baseUrl.length) || "home";
-    const currentDomain = req.get('host')?.split(":")[0] || "localhost";
+    const currentDomain = req.get('host') || "localhost";
 
     const link = await getLinkByAccess(res.locals.accessId, currentDomain);
     if (!link) return sendNotFound(res);
