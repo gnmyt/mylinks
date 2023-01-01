@@ -8,20 +8,32 @@ export const LinkProvider = (props) => {
 
     const [currentDomain] = useContext(DomainContext);
     const [links, setLinks] = useState([]);
-    const [query, setQuery] = useState(""); // TODO
+    const [query, setQuery] = useState({});
+    const [searchContainer, setSearchContainer] = useState("");
 
-    const updateLinks = () => jsonRequest(`/link/${currentDomain}/list`)
-        .then(json => setLinks(json));
+    const generateQuery = () => {
+        const finalJson = {};
+
+        if (query.tag) finalJson.tags = query.tag;
+        if (query.creator) finalJson.creator = query.creator;
+        if (query.title) finalJson.title = query.title;
+
+        return new URLSearchParams(finalJson).toString();
+    }
+
+    const updateLinks = () => jsonRequest(`/link/${currentDomain}/list?${generateQuery()}`).then(json => {
+        if (!json.message) setLinks(json);
+    });
 
     useEffect(() => {
         updateLinks();
 
         const interval = setInterval(() => updateLinks(), 15000);
         return () => clearInterval(interval);
-    }, [currentDomain]);
+    }, [currentDomain, query]);
 
     return (
-        <LinkContext.Provider value={[links, updateLinks, setQuery]}>
+        <LinkContext.Provider value={[links, updateLinks, setQuery, query, searchContainer, setSearchContainer]}>
             {props.children}
         </LinkContext.Provider>
     )
