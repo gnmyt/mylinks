@@ -1,36 +1,5 @@
 @import "@/common/styles/colors"
 
-.dialog-area
-  position: fixed
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
-  background-color: rgba(0, 0, 0, 0.6)
-  display: flex
-  align-items: center
-  justify-content: center
-  z-index: 5
-  backdrop-filter: blur(2px)
-
-.dialog
-  width: 600px
-  background-color: $white
-  border-radius: 15px
-  transition: all 0.3s
-  animation: fadeIn 0.3s
-  padding: 15px
-  display: flex
-  flex-direction: column
-  gap: 1rem
-  z-index: 100
-
-.dialog-hidden
-  visibility: hidden
-  opacity: 0
-  animation: fadeOut 0.3s
-
-
 // Main Area
 
 .dialog-main
@@ -65,21 +34,3 @@
   font-size: 16pt
   padding: 10px 15px
   border-radius: 12px
-
-
-
-@keyframes fadeIn
-  0%
-    opacity: 0
-    transform: scale(0.4)
-    filter: blur(10px)
-  100%
-    opacity: 1
-
-@keyframes fadeOut
-  0%
-    opacity: 1
-  100%
-    opacity: 0
-    transform: scale(0.4)
-    filter: blur(10px)
