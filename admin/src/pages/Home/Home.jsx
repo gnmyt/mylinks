@@ -15,7 +15,7 @@ export const Home = () => {
             <div className="link-area">
                 {links.map(link => <LinkItem id={link.id} title={link.title} accessId={link.accessId} tags={link.tags}
                                              domain={link.domainName} key={link.id} type={link.type}
-                                             views={link.clicks} creator={link.creator}/>)}
+                                             views={link.clicks} creator={link.creator} meta={link.meta} isEnabled={link.isEnabled}/>)}
                 {links.length === 0 &&
                     <h2 className="text-center">Bisher wurden keine Links unter dieser Domain erstellt</h2>}
             </div>
