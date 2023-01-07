@@ -19,3 +19,14 @@
 
 .delete-domain:hover
   color: $red-hover
+
+@media screen and (max-width: 502px)
+  .domain-item
+    gap: 0.2rem
+  .domain-item svg:nth-child(1)
+    display: none
+
+@media screen and (max-width: 391px)
+  .domain-item
+    font-size: 15pt
+    padding: 0.7rem 0.5rem
