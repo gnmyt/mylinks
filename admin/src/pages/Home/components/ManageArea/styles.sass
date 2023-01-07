@@ -3,9 +3,32 @@
   margin-right: 3rem
   margin-top: 2rem
   display: flex
-  justify-content: space-between
+  gap: 1rem
+  flex-wrap: wrap
   align-items: center
+  transition: all 0.5s ease-in-out
 
 .manage-area .right-area
   display: flex
   gap: 1rem
+
+@media screen and (max-width: 1024px)
+  .manage-area
+    margin: 2rem 3rem 1rem
+  .manage-area .textbox-input
+    font-size: 18pt
+  .manage-area .btn
+    font-size: 18pt
+
+@media screen and (max-width: 768px)
+  .manage-area
+    margin: 1rem 2rem 0
+    justify-content: center
+  .manage-area .textbox-input
+    width: 12rem
+
+@media screen and (max-width: 425px)
+  .manage-area
+    margin: 1rem
+  .manage-area .textbox-input
+    width: 12rem
