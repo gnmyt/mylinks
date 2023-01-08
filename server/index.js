@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 
 // Default middleware
 app.use(express.json());
+app.use(express.urlencoded());
 
 // Middlewares which require no authentication
 app.use("/api/auth", require('./routes/auth'));
