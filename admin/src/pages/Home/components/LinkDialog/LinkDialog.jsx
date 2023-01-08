@@ -74,7 +74,8 @@ export const LinkDialog = (props) => {
 
                     {Object.entries(group.fields).map(([id, obj]) => <InputGroup title={obj.name}
                                                                                  description={obj.description}
-                                                                                 key={id} id={id} default={props.meta ? props.meta[id] : ""}/>)}
+                                                                                 key={id} id={id} type={obj.type}
+                                                                                 default={props.meta ? props.meta[id] : ""}/>)}
                 </div>)}
             </div>
 
