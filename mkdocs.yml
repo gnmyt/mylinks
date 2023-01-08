@@ -3,7 +3,7 @@ copyright: Copyright &copy; 2022 - 2023 Mathias Wagner
 
 repo_name: MyLinks
 repo_url: https://github.com/gnmyt/mylinks
-edit_uri: https://github.com/gnmyt/mylinks/edit/development/docs
+edit_uri: https://github.com/gnmyt/mylinks/edit/main/docs
 
 theme:
     name: material
