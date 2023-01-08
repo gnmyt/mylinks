@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const fieldValidation = Joi.object({
-  type: Joi.string().required().valid("text", "number"),
+  type: Joi.string().required().valid("text", "number", "date", "datetime-local", "month", "password", "range"),
   name: Joi.string().required().max(25),
   description: Joi.string().required().max(40),
   placeholder: Joi.string().max(30)
