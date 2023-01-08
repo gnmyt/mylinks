@@ -7,11 +7,12 @@ import "./styles.sass";
 
 export const LinkChooser = (props) => {
     const [module, setModule] = useState(null);
-    const [isOpen, setIsOpen] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
 
     const switchModule = (id) => {
         setModule(id);
         props.close();
+        setIsOpen(false);
     }
 
     useEffect(() => {
@@ -23,7 +24,7 @@ export const LinkChooser = (props) => {
 
     return (
         <>
-            <LinkDialog module={module} isOpen={isOpen} close={() => setIsOpen(null)}/>
+            <LinkDialog module={module} isOpen={isOpen} close={() => switchModule(null)}/>
             {props.isOpen && <DialogProvider close={props.close}>
 
                 <div className="module-area">
