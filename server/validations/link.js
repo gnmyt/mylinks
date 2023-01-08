@@ -3,7 +3,7 @@ const Joi = require('joi');
 module.exports.listLinksValidation = Joi.object({
     creator: Joi.string().min(5).max(25),
     tags: Joi.string().max(50),
-    title: Joi.string().min(3).max(25),
+    title: Joi.string().min(1).max(25),
     limit: Joi.number().min(1).max(5000)
 });
 
