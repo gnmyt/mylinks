@@ -1,0 +1,38 @@
+site_name: MyLinks Dokumentation
+copyright: Copyright &copy; 2022 - 2023 Mathias Wagner
+
+repo_name: MyLinks
+repo_url: https://github.com/gnmyt/mylinks
+edit_uri: https://github.com/gnmyt/mylinks/edit/development/docs
+
+theme:
+    name: material
+    language: de
+    logo: assets/logo.png
+    favicon: assets/logo.png
+    palette:
+        - media: "(prefers-color-scheme: light)"
+          schema: default
+          primary: deep purple
+          toggle:
+              icon: material/brightness-7
+              name: Zum dunklen Modus wechseln
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          primary: deep purple
+          toggle:
+              icon: material/brightness-4
+              name: Zum hellen Modus wechseln
+
+extra:
+    generator: false
+    social:
+        - icon: fontawesome/brands/github
+          link: https://github.com/gnmyt/mylinks
+        - icon: fontawesome/brands/twitter
+          link: https://twitter.com/germannewsmaker
+        - icon: fontawesome/brands/discord
+          link: https://discord.com/users/386242172632170496
+
+nav:
+    - Start: index.md
