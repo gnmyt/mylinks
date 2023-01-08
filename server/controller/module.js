@@ -10,7 +10,7 @@ module.exports.initialize = () => fs.readdirSync(path.join(process.cwd(), 'modul
         const currentModule = require(process.cwd() + `/modules/${moduleName}/module`);
 
         const moduleError = this.isValidModule(currentModule.info);
-        if (moduleError) return console.log(`Could not load module ${moduleName}: ${moduleError}`);
+        if (moduleError) return console.log(`Could not load module ${moduleName}: ${moduleError.message}`);
 
         modules[moduleName] = currentModule;
         console.log(`Module ${moduleName} has been loaded`);

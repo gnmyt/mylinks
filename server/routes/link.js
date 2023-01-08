@@ -14,7 +14,7 @@ const app = require('express').Router();
 
 app.get("/:domain/list", async (req, res) => {
     const error = await validateSchema(listLinksValidation, req.query);
-    if (error) return res.status(400).json({message: error});
+    if (error) return res.status(400).json(error);
 
     let links = await listLinks(req.params.domain, req.query);
     if (!links) return res.status(400).json({message: "Could not use the provided filter"});
@@ -38,7 +38,7 @@ app.get("/:id", async (req, res) => {
 
 app.put("/", async (req, res) => {
     const error = await validateSchema(createLinkValidation, req.body);
-    if (error) return res.status(400).json({message: error});
+    if (error) return res.status(400).json(error);
 
     const module = getModule(req.body.type);
     if (!module) return res.status(404).json({message: "The provided module does not exist"});
@@ -47,7 +47,7 @@ app.put("/", async (req, res) => {
         return res.status(409).json({message: "The provided access id already exists"});
 
     const moduleError = await validateSchema(module.info.validationSchema, req.body.meta);
-    if (moduleError) return res.status(400).json({message: moduleError});
+    if (moduleError) return res.status(400).json(moduleError);
 
     let link = await createLink({...req.body, creatorId: req.user.id});
 
@@ -56,7 +56,7 @@ app.put("/", async (req, res) => {
 
 app.patch("/:id", async (req, res) => {
     const error = await validateSchema(editLinkValidation, req.body);
-    if (error) return res.status(400).json({message: error});
+    if (error) return res.status(400).json(error);
 
     const currentLink = await getLinkById(req.params.id);
     if (currentLink === null) return res.status(409).json({message: "The provided link does not exist"});
@@ -66,7 +66,7 @@ app.patch("/:id", async (req, res) => {
         if (!module) return res.status(404).json({message: "The provided module does not exist"});
 
         const moduleError = await validateSchema(module.info.validationSchema, req.body.meta);
-        if (req.body.meta && moduleError) return res.status(400).json({message: moduleError});
+        if (req.body.meta && moduleError) return res.status(400).json(moduleError);
     }
 
     if (req.body.accessId || req.body.domainName) {

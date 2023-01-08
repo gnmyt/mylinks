@@ -9,7 +9,7 @@ app.get("/", async (req, res) => {
 
 app.put("/", async (req, res) => {
     const error = await validateSchema(domainValidation, req.body);
-    if (error) return res.status(400).json({message: error});
+    if (error) return res.status(400).json(error);
 
     const domain = await createDomain(req.body.domainName);
     if (domain === null) return res.status(409).json({message: "This domain already exists"});
