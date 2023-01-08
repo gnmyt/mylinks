@@ -7,7 +7,7 @@ module.exports.onClick = (id, accessId, metaData, controller) => {
 
 module.exports.info = {
     name: "Nutzer weiterleiten",
-    icon: "compass",
+    icon: "clock",
     validationSchema: Joi.object({
         shortenUrl: Joi.string().max(2500).uri().required(),
         timer: Joi.number().min(1).max(60)
