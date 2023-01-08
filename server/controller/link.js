@@ -1,6 +1,7 @@
 const Link = require('../models/Link');
 const {getUserByName, getUserById} = require("./user");
 const {Op} = require("sequelize");
+const {getModule} = require("./module");
 
 module.exports.mapLink = async (link) => {
     const user = await getUserById(link.creatorId);
@@ -27,8 +28,8 @@ module.exports.listLinks = async (domainName, configuration) => {
     return (await Link.findAll({
         where: {...configuration, domainName},
         limit: configuration.limit || 5000,
-        order: [['createdAt', 'DESC']]
-    }));
+        order: [['createdAt', 'DESC']],
+    })).filter(obj => getModule(obj.type));
 }
 
 module.exports.getLinkById = async (id) => {
